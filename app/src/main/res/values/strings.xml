@@ -1,0 +1,115 @@
+<resources>
+    <string name="app_name">My HD WallPaper</string>
+    <bool name="is_tablet">false</bool>
+    <string name="app_interview">Android Interview Questions</string>
+    <integer-array name="wallpaper_array">
+
+        <item>@drawable/wall_01</item>
+        <item>@drawable/wall_02</item>
+        <item>@drawable/wall_03</item>
+        <item>@drawable/wall_04</item>
+        <item>@drawable/wall_05</item>
+        <item>@drawable/wall_06</item>
+        <item>@drawable/wall_07</item>
+        <item>@drawable/wall_08</item>
+        <item>@drawable/wall_09</item>
+        <item>@drawable/wall_10</item>
+        <item>@drawable/wall_11</item>
+
+        <item>@drawable/wall_12</item>
+        <item>@drawable/wall_13</item>
+        <item>@drawable/wall_14</item>
+        <item>@drawable/wall_15</item>
+        <item>@drawable/wall_16</item>
+        <item>@drawable/wall_17</item>
+        <item>@drawable/wall_18</item>
+        <item>@drawable/wall_19</item>
+        <item>@drawable/wall_20</item>
+        <item>@drawable/wall_21</item>
+
+        <item>@drawable/wall_22</item>
+        <item>@drawable/wall_23</item>
+        <item>@drawable/wall_24</item>
+        <item>@drawable/wall_25</item>
+        <item>@drawable/wall_26</item>
+        <item>@drawable/wall_27</item>
+        <item>@drawable/wall_28</item>
+        <item>@drawable/wall_29</item>
+        <item>@drawable/wall_30</item>
+        <item>@drawable/wall_31</item>
+
+        <item>@drawable/wall_32</item>
+        <item>@drawable/wall_33</item>
+        <item>@drawable/wall_34</item>
+        <item>@drawable/wall_35</item>
+        <item>@drawable/wall_36</item>
+        <item>@drawable/wall_37</item>
+        <item>@drawable/wall_38</item>
+        <item>@drawable/wall_39</item>
+        <item>@drawable/wall_40</item>
+        <item>@drawable/wall_41</item>
+
+
+        <item>@drawable/wall_42</item>
+        <item>@drawable/wall_43</item>
+        <item>@drawable/wall_44</item>
+        <item>@drawable/wall_45</item>
+        <item>@drawable/wall_46</item>
+        <item>@drawable/wall_47</item>
+        <item>@drawable/wall_48</item>
+        <item>@drawable/wall_49</item>
+        <item>@drawable/wall_50</item>
+        <item>@drawable/wall_51</item>
+
+
+        <item>@drawable/wall_52</item>
+        <item>@drawable/wall_53</item>
+        <item>@drawable/wall_54</item>
+        <item>@drawable/wall_55</item>
+        <item>@drawable/wall_56</item>
+        <item>@drawable/wall_57</item>
+        <item>@drawable/wall_58</item>
+        <item>@drawable/wall_59</item>
+        <item>@drawable/wall_60</item>
+        <item>@drawable/wall_61</item>
+
+        <item>@drawable/wall_62</item>
+        <item>@drawable/wall_63</item>
+        <item>@drawable/wall_64</item>
+        <item>@drawable/wall_65</item>
+        <item>@drawable/wall_66</item>
+        <item>@drawable/wall_67</item>
+        <item>@drawable/wall_68</item>
+        <item>@drawable/wall_69</item>
+        <item>@drawable/wall_70</item>
+
+
+        <item>@drawable/wall_71</item>
+        <item>@drawable/wall_72</item>
+        <item>@drawable/wall_73</item>
+        <item>@drawable/wall_74</item>
+        <item>@drawable/wall_75</item>
+        <item>@drawable/wall_76</item>
+        <item>@drawable/wall_77</item>
+        <item>@drawable/wall_78</item>
+        <item>@drawable/wall_79</item>
+
+        <item>@drawable/wall_80</item>
+        <item>@drawable/wall_81</item>
+        <item>@drawable/wall_82</item>
+        <item>@drawable/wall_83</item>
+        <item>@drawable/wall_84</item>
+        <item>@drawable/wall_85</item>
+        <item>@drawable/wall_86</item>
+        <item>@drawable/wall_87</item>
+        <item>@drawable/wall_88</item>
+        <item>@drawable/wall_89</item>
+
+
+        <item>@drawable/wall_90</item>
+        <item>@drawable/wall_91</item>
+
+
+</integer-array>
+
+</resources>

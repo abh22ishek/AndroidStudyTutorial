@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "928318489662",
+    "project_id": "myhdwallpaper-199de",
+    "storage_bucket": "myhdwallpaper-199de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928318489662:android:ca0f7f1e2ac334e5383d6f",
+        "android_client_info": {
+          "package_name": "com.mine.mywallpaper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928318489662-gc55rbjvtakobnqaq3jsmnlm4j88tsmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3k71_Yh4lRBM-qRayF8Pw7YTXD_mbhdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928318489662-gc55rbjvtakobnqaq3jsmnlm4j88tsmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
