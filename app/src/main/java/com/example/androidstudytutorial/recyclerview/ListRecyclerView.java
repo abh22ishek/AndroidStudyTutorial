@@ -67,7 +67,7 @@ public class ListRecyclerView extends RecyclerView.Adapter<ListRecyclerView.List
           public void onClick(View view) {
              final int pos = holder.getAdapterPosition();
              if(mDescList!=null && mDescList.get(pos)!=null){
-                 callFragment.showFragment(mDescList.get(pos).getImage(),mDescList.get(pos).getText(),"");
+                 callFragment.showFragment(mDescList.get(pos).getImage(),mDescList.get(pos).getText(),"",pos);
 
              }
           }

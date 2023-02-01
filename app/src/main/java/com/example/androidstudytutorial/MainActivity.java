@@ -34,11 +34,9 @@ public class MainActivity extends FragmentActivity implements CallFragment {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.status_color));
-        }
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(getResources().getColor(R.color.status_color));
 
         loadFragment();
 
@@ -89,13 +87,14 @@ public class MainActivity extends FragmentActivity implements CallFragment {
 
 
     @Override
-    public void showFragment(int drawable, String fileName , String TAG) {
+    public void showFragment(int drawable, String fileName , String TAG , int pos) {
         // Add the fragment to the activity, pushing this transaction
         // on to the back stack.
         DisplayFragment displayFragment =new DisplayFragment();
         Bundle bundle =new Bundle();
         bundle.putInt("IMAGE",drawable);
         bundle.putString("FILE_NAME",fileName);
+        bundle.putInt("POSITION",pos);
         displayFragment.setArguments(bundle);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.mainLayout, displayFragment,DisplayFragment.class.getSimpleName()).

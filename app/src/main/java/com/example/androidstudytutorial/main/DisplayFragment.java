@@ -8,6 +8,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaScannerConnection;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,12 +28,15 @@ import androidx.work.impl.model.WorkProgressDao;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.androidstudytutorial.model.Images;
+import com.example.androidstudytutorial.model.ListDescx;
 import com.mine.mywallpaper.BuildConfig;
 import com.mine.mywallpaper.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 public class DisplayFragment extends Fragment {
@@ -48,6 +52,7 @@ public class DisplayFragment extends Fragment {
     private Button setWallpaper;
 
 
+    private int position = 0;
     ProgressDialog progressDialog;
     @Override
     public void onAttach(@NonNull Context context) {
@@ -75,15 +80,7 @@ public class DisplayFragment extends Fragment {
         mDrawable  = getArguments().getInt("IMAGE");
         fileName  = getArguments().getString("FILE_NAME");
 
-        if(getActivity() !=null ){
-            Glide.with(getActivity())
-                    .load(getActivity().getDrawable(mDrawable))
-                    .fitCenter()
-                    .placeholder(R.color.gray)
-                    .skipMemoryCache(true)
-                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                    .into(imageview);
-        }
+        setImageView(mDrawable);
 
         //imageview.setBackground(getResources().getDrawable(mDrawable,null));
         imageview.setOnClickListener(new View.OnClickListener() {
@@ -103,8 +100,10 @@ public class DisplayFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    new Thread(() -> downloadFile(getActivity(),getBitmapFromView(imageview) , fileName)).start();
-                    Toast.makeText(getActivity(),"File Downloaded",Toast.LENGTH_LONG).show();
+                    new Thread(() -> {
+                        downloadFile(getActivity(),getBitmapFromView(imageview), fileName);
+                    }).start();
+                    Toast.makeText(getActivity(),"File downloaded successfully  in Downloads Folder",Toast.LENGTH_LONG).show();
                 }catch (Exception e){
                     e.printStackTrace();
                     Toast.makeText(getActivity(),"Sorry , Unable to download File ",Toast.LENGTH_SHORT).show();
@@ -137,10 +136,16 @@ public class DisplayFragment extends Fragment {
             public void onClick(View v) {
 
              //need to change later
+                position = viewFlipper.getDisplayedChild()-1;
+                ListDescx listDescx = ListDescx.getInstance();
+                List<Images>  list  = listDescx.getDescxList();
+                mDrawable = list.get(position).getImage();
+                Log.i(TAG ,"Position = "+position);
+
                 setWallpaper.setEnabled(false);
                 progressDialog =new ProgressDialog(getActivity());
                 progressDialog.setMessage("Setting Wallpaper....");
-                progressDialog.setTitle("Progress");
+                progressDialog.setTitle("Please Wait !");
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDialog.setCancelable(false);
                 progressDialog.show();
@@ -156,19 +161,34 @@ public class DisplayFragment extends Fragment {
         imagePrevious =view.findViewById(R.id.imagePrev);
         viewFlipper =view.findViewById(R.id.viewFlipper);
         if(getActivity()!=null){
-         //   displayList(getActivity());
+           displayList(getActivity(),position);
         }
 
         imageNext.setOnClickListener(v -> {
+            viewFlipper.setFlipInterval(1000);
             viewFlipper.showNext();
+
         });
 
-        imagePrevious.setOnClickListener(v -> {
+           imagePrevious.setOnClickListener(v -> {
+            viewFlipper.setFlipInterval(1000);
             viewFlipper.showPrevious();
-        });
+
+           });
 
     }
 
+    private void setImageView(int mDrawable){
+        if(getActivity() !=null ){
+            Glide.with(getActivity())
+                    .load(getActivity().getDrawable(mDrawable))
+                    .fitCenter()
+                    .placeholder(R.color.gray)
+                    .skipMemoryCache(true)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                    .into(imageview);
+        }
+    }
 
     private void setSetWallpaper(Context context, int drawable)
     {
@@ -203,11 +223,11 @@ public class DisplayFragment extends Fragment {
         return null;
     }
 
-    private void displayList(Context context){
+    private void displayList(Context context,int position){
         TypedArray images =  context.getResources().obtainTypedArray(R.array.wallpaper_array);
         // int [] images ={R.drawable.wall_paper1,R.drawable.wall_paper2,R.drawable.wall_paper3,R.drawable.wall_paper4, R.drawable.wall_3,R.drawable.wall_paper5};
         for(int k=0;k<images.length();k++){
-          setFlipperImage(images.getResourceId(k,0),context);
+          setFlipperImage(images.getResourceId(k,0),context,position);
         }
         images.recycle();
 
@@ -227,7 +247,7 @@ public class DisplayFragment extends Fragment {
 
     }
 
-    private void setFlipperImage(int res ,Context context) {
+    private void setFlipperImage(int res ,Context context ,int position) {
         Log.i("Set Flipper Called", res+"");
         ImageView image = new ImageView(context);
         image.setBackgroundResource(res);
@@ -236,7 +256,7 @@ public class DisplayFragment extends Fragment {
 
     private void downloadFile(Context context ,Bitmap bitmap,String image_name) {
         try{
-            String root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString() + "/MyWallpaper";
+            String root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + "/MyWallpaper";
             File myDir = new File(root);
             myDir.mkdirs();
             String fileName = image_name + ".png";
@@ -265,3 +285,4 @@ public class DisplayFragment extends Fragment {
 }
 
 
+//

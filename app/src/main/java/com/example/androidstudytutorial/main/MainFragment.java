@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.example.androidstudytutorial.MainActivity;
 import com.example.androidstudytutorial.listners.CallFragment;
 import com.example.androidstudytutorial.model.Images;
+import com.example.androidstudytutorial.model.ListDescx;
 import com.example.androidstudytutorial.recyclerview.ListRecyclerView;
 import com.mine.mywallpaper.R;
 
@@ -67,11 +68,15 @@ public class MainFragment extends Fragment {
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
 
          final ListRecyclerView listRecyclerView = new ListRecyclerView(getActivity(), displayList(getActivity()), callFragment);
+         ListDescx listDescx = ListDescx.getInstance();
+         listDescx.setDescxList(displayList(getActivity()));
         recyclerView.setAdapter(listRecyclerView);
 
     }
 
     private List<Images> displayList(Context context){
+
+
 
         List<Images> imagesList =new ArrayList<>();
         TypedArray images =  context.getResources().obtainTypedArray(R.array.wallpaper_array);
